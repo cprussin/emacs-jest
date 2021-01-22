@@ -127,6 +127,11 @@ When non-nil only ‘test_foo()’ will match, and nothing else."
                  (const :tag "Save current buffer" save-current)
                  (const :tag "Ignore" nil)))
 
+(defcustom jest-default-arguments '("--colors")
+  "Default arguments to pass to jest."
+  :group 'jest
+  :type '(repeat string))
+
 (defvar jest--history nil
   "History for jest invocations.")
 
@@ -180,6 +185,7 @@ When non-nil only ‘test_foo()’ will match, and nothing else."
     (?d "Test function " jest-function)
     "Repeat tests"
     (?r "Repeat last test run" jest-repeat))
+  :default-arguments jest-default-arguments
   :max-action-columns 2
   :default-action 'jest-repeat)
 
